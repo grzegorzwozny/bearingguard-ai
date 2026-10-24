@@ -1,0 +1,53 @@
+# Copyright (c) 2026 BearingGuard AI contributors
+# SPDX-License-Identifier: Apache-2.0
+#
+# EXAMPLE west manifest for BearingGuard AI - Status: Placeholder
+#
+# This file documents the planned nRF Connect SDK workspace layout. It is intentionally named
+# `west.yml.example` so that it is not picked up by west until the project is ready. To use it:
+#
+#   1. Copy it to `west.yml` in the repository root (or keep it in `firmware/` and point `west init -l`
+#      at that directory).
+#   2. Replace the `revision` below with an nRF Connect SDK release that includes nRF54LM20 DK board
+#      support (verify in the release notes of the chosen version).
+#   3. From the directory that should become the workspace root, run:
+#        west init -l <path-to-this-repository>
+#        west update
+#        west zephyr-export
+#        pip install -r zephyr/scripts/requirements.txt   # or use the nRF Connect SDK toolchain bundle
+#   4. Build the application once it exists:
+#        west build -b nrf54lm20dk/nrf54lm20a/cpuapp firmware/app
+#
+# Workspace layout after `west update` (T2 "workspace application" topology):
+#
+#   <workspace>/
+#   ├── .west/
+#   ├── bearingguard-ai/      <- this repository (manifest repository)
+#   ├── nrf/                  <- sdk-nrf (nRF Connect SDK)
+#   ├── zephyr/
+#   ├── nrfxlib/
+#   ├── bootloader/
+#   └── modules/
+#
+# TODO: pin `revision` to a verified nRF Connect SDK tag.
+# TODO: confirm the board target name `nrf54lm20dk/nrf54lm20a/cpuapp` for the pinned release.
+
+manifest:
+  version: "0.13"
+
+  remotes:
+    - name: ncs
+      url-base: https://github.com/nrfconnect
+
+  projects:
+    # The nRF Connect SDK manifest repository. `import: true` pulls in Zephyr, nrfxlib, MCUboot,
+    # and all modules at the versions tested by Nordic for that release.
+    - name: nrf
+      remote: ncs
+      repo-path: sdk-nrf
+      revision: main   # TODO: replace with a release tag that supports the nRF54LM20 DK
+      import: true
+
+  self:
+    # Directory name of this repository inside the west workspace.
+    path: bearingguard-ai

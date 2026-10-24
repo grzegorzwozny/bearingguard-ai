@@ -1,0 +1,189 @@
+# BearingGuard AI - .gitignore
+#
+# Policy: documentation sources, CSV templates, source code, schematics, CAD sources, and final
+# release artifacts that are intentionally selected for publication are NOT ignored. Large binary
+# data, generated outputs, caches, credentials, and temporary files ARE ignored. If a specific
+# generated artifact (for example one exported model) must be published, add an explicit
+# negation rule (!path/to/file) next to the rule that ignores it.
+
+# ---------------------------------------------------------------------------
+# Zephyr / nRF Connect SDK build outputs
+# ---------------------------------------------------------------------------
+build/
+build-*/
+build_*/
+_build/
+twister-out*/
+sanity-out*/
+*.pristine
+.west/
+compile_commands.json
+*.log
+
+# ---------------------------------------------------------------------------
+# Python
+# ---------------------------------------------------------------------------
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+.eggs/
+dist/
+.venv/
+venv/
+env/
+ENV/
+.python-version
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.tox/
+.coverage
+.coverage.*
+htmlcov/
+
+# ---------------------------------------------------------------------------
+# Jupyter
+# ---------------------------------------------------------------------------
+.ipynb_checkpoints/
+*/.ipynb_checkpoints/*
+
+# ---------------------------------------------------------------------------
+# Editors and IDEs (keep shared, reviewed settings only)
+# ---------------------------------------------------------------------------
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json.example
+.idea/
+*.code-workspace
+*.swp
+*.swo
+*~
+
+# ---------------------------------------------------------------------------
+# Operating system files
+# ---------------------------------------------------------------------------
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# ---------------------------------------------------------------------------
+# Generated model outputs and training artifacts
+# ---------------------------------------------------------------------------
+models/exported/*
+!models/exported/README.md
+models/training/runs/
+models/training/checkpoints/
+models/training/logs/
+models/evaluation/results/
+*.tflite
+*.onnx
+*.h5
+*.hdf5
+*.keras
+*.pt
+*.pth
+*.ckpt
+*.pb
+*.pkl
+*.joblib
+*.eim
+model_data.cc
+model_data.h
+
+# ---------------------------------------------------------------------------
+# Datasets: raw and processed data live outside the repository
+# ---------------------------------------------------------------------------
+datasets/raw/*
+!datasets/raw/README.md
+datasets/processed/*
+!datasets/processed/README.md
+datasets/tmp/
+datasets/**/*.csv.gz
+tmp_data/
+scratch/
+
+# Raw audio (not retained in the repository)
+*.wav
+*.flac
+*.mp3
+*.ogg
+*.aiff
+*.aif
+*.m4a
+*.opus
+
+# Large binary captures and intermediate arrays
+*.bin
+*.raw
+*.dat
+*.npy
+*.npz
+*.parquet
+*.feather
+*.arrow
+*.pcap
+*.pcapng
+*.btsnoop
+
+# Large media (link externally; see media/README.md)
+*.mp4
+*.mov
+*.avi
+*.mkv
+*.webm
+
+# ---------------------------------------------------------------------------
+# Credentials, keys, and environment files
+# ---------------------------------------------------------------------------
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+*.jks
+*.keystore
+id_rsa*
+id_ed25519*
+*.secret
+secrets/
+credentials.json
+service-account*.json
+*.token
+
+# ---------------------------------------------------------------------------
+# Temporary CAD and EDA exports (sources such as .kicad_*, .FCStd, .step, .stl are kept)
+# ---------------------------------------------------------------------------
+*.FCBak
+*.FCStd1
+*.FCStd2
+*-backups/
+*.kicad_pcb-bak
+*.kicad_sch-bak
+*.kicad_prl
+_autosave-*
+*.bak
+*.bck
+*.lck
+fp-info-cache
+~$*
+*.tmp
+*.temp
+*.gcode
+
+# ---------------------------------------------------------------------------
+# Archives (release packages belong in GitHub Releases, not in the tree)
+# ---------------------------------------------------------------------------
+*.zip
+*.tar
+*.tar.gz
+*.tgz
+*.7z
+*.rar

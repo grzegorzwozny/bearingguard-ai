@@ -1,0 +1,88 @@
+# EditorConfig for BearingGuard AI - https://editorconfig.org/
+# Conventions follow the Zephyr / nRF Connect SDK style for firmware files and PEP 8 for Python.
+
+root = true
+
+# Defaults for all files
+[*]
+charset = utf-8
+end_of_line = lf
+insert_final_newline = true
+trim_trailing_whitespace = true
+indent_style = space
+indent_size = 4
+max_line_length = 100
+
+# C / C++ sources and headers (Zephyr coding style: tabs, 8-column width)
+[*.{c,h,cpp,hpp,cc}]
+indent_style = tab
+indent_size = 8
+
+# Assembly and linker scripts
+[*.{S,s,ld}]
+indent_style = tab
+indent_size = 8
+
+# Devicetree sources and overlays
+[*.{dts,dtsi,overlay}]
+indent_style = tab
+indent_size = 8
+
+# Kconfig
+[Kconfig*]
+indent_style = tab
+indent_size = 8
+
+# CMake
+[{CMakeLists.txt,*.cmake}]
+indent_style = space
+indent_size = 2
+
+# Zephyr configuration fragments
+[*.conf]
+indent_style = space
+indent_size = 4
+
+# YAML (west manifests, board metadata, CI)
+[*.{yml,yaml}]
+indent_style = space
+indent_size = 2
+
+# JSON
+[*.json]
+indent_style = space
+indent_size = 2
+
+# Python
+[*.py]
+indent_style = space
+indent_size = 4
+max_line_length = 100
+
+# Shell scripts
+[*.sh]
+indent_style = space
+indent_size = 4
+
+# Windows batch files require CRLF
+[*.{bat,cmd}]
+end_of_line = crlf
+
+# Markdown: trailing double spaces are meaningful line breaks
+[*.md]
+trim_trailing_whitespace = false
+max_line_length = off
+
+# CSV templates: keep exactly as written
+[*.csv]
+trim_trailing_whitespace = false
+insert_final_newline = true
+
+# Makefiles
+[Makefile]
+indent_style = tab
+indent_size = 8
+
+# Git commit messages
+[COMMIT_EDITMSG]
+max_line_length = 72

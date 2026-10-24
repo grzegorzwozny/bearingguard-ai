@@ -1,0 +1,1 @@
+recording_id,bearing_id,timestamp,test_condition,severity,rpm,load_level,accelerometer_position,acoustic_sensor_type,acoustic_sensor_position,ambient_temperature_c,housing_temperature_c,sample_rate_hz,window_duration_ms,operator_notes,dataset_split
